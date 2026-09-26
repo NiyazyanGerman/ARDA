@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogContest</class>
+ <widget class="QDialog" name="DialogContest">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1085</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Конкурсная активность</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QDialog { background-color: #0f172a; }
+
+    QGroupBox {
+        color: #94a3b8; font-weight: bold; border: 1px solid #1e293b;
+        border-radius: 12px; margin-top: 15px; padding-top: 15px;
+    }
+
+    QLineEdit {
+        background-color: #1e293b; color: #f1f5f9; border: 1px solid #334155;
+        border-radius: 8px; padding: 8px; font-size: 13px;
+    }
+    QLineEdit:focus { border-color: #38bdf8; }
+
+    QPushButton {
+        background-color: #334155; color: #f8fafc; border: none;
+        border-radius: 8px; padding: 8px 16px; font-weight: 600;
+    }
+    QPushButton:hover { background-color: #475569; }
+    QPushButton:pressed { background-color: #1e293b; }
+   </string>
+  </property>
+
+  <!-- Блок Слева: Максимальный балл -->
+  <widget class="QGroupBox" name="groupMaxScore">
+   <property name="geometry">
+    <rect><x>20</x><y>20</y><width>350</width><height>450</height></rect>
+   </property>
+   <property name="title"><string>Максимальный балл</string></property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item><widget class="QLineEdit" name="lineEdit_MaxScore_FileInput"/></item>
+    <item><widget class="QPushButton" name="btnBrowseMaxScoreInputFile"><property name="text"><string>Выбрать файл считывания</string></property></widget></item>
+    <item><widget class="QLineEdit" name="lineEdit_MaxScore_FileSave"/></item>
+    <item><widget class="QPushButton" name="btnMaxScoreFileSave"><property name="text"><string>Выбрать файл сохранения</string></property></widget></item>
+    <item><widget class="QLineEdit" name="lineEdit_MaxScore_FileLog"/></item>
+    <item><widget class="QPushButton" name="btnMaxScoreFileLog"><property name="text"><string>Выбрать файл лога</string></property></widget></item>
+    <item><widget class="QLineEdit" name="lineEdit_MaxScore_Faculty"/></item>
+   </layout>
+  </widget>
+
+  <!-- Блок Справа: Аттестаты -->
+  <widget class="QGroupBox" name="groupAttestat">
+   <property name="geometry">
+    <rect><x>390</x><y>20</y><width>670</width><height>450</height></rect>
+   </property>
+   <property name="title"><string>Работа с аттестатами</string></property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_FileSave"/></item>
+    <item row="0" column="1"><widget class="QPushButton" name="btnBrowseAttestatSaveFile"><property name="text"><string>Сохранение</string></property></widget></item>
+
+    <item row="1" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_FileLog"/></item>
+    <item row="1" column="1"><widget class="QPushButton" name="btnAttestatFileLog"><property name="text"><string>Лог</string></property></widget></item>
+
+    <item row="2" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_InputFile"/></item>
+    <item row="2" column="1"><widget class="QPushButton" name="btnAttestatInputFile"><property name="text"><string>Студенты</string></property></widget></item>
+
+    <item row="3" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_Fakyltet"/></item>
+    <item row="4" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_BudgetSlots"/></item>
+    <item row="5" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_ContractSlots"/></item>
+    <item row="6" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_BudgetMinBall"/></item>
+    <item row="7" column="0"><widget class="QLineEdit" name="lineEdit_Attestat_ContractMinBall"/></item>
+   </layout>
+  </widget>
+
+  <!-- Кнопки внизу -->
+  <widget class="QPushButton" name="pushButtonInfoAttestat">
+   <property name="geometry"><rect><x>20</x><y>485</y><width>131</width><height>31</height></rect></property>
+   <property name="text"><string>Информация</string></property>
+  </widget>
+
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry"><rect><x>880</x><y>485</y><width>181</width><height>31</height></rect></property>
+   <property name="standardButtons"><set>QDialogButtonBox::StandardButton::Close|QDialogButtonBox::StandardButton::Ok</set></property>
+  </widget>
+ </widget>
+</ui>
