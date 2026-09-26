@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HTTPserverForm</class>
+ <widget class="QWidget" name="HTTPserverForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ARDA — Управление сервером</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget#HTTPserverForm {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #161625, stop:1 #0c0c14);
+        font-family: "Segoe UI", sans-serif;
+        font-size: 10pt;
+        color: #d1d1e0;
+    }
+
+    QFrame#topBar      { background-color: rgba(51,144,236,0.05); border: 1px solid rgba(51,144,236,0.15); border-radius: 12px; }
+    QFrame#actionsPanel{ background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; }
+    QFrame#logPanel    { background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; }
+    QFrame#statusCard  { background-color: rgba(34,197,94,0.05);  border: 1px solid rgba(34,197,94,0.15);  border-radius: 14px; }
+    QFrame#progressCard{ background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; }
+    QFrame#connectionCard { background-color: rgba(51,144,236,0.04); border: 1px solid rgba(51,144,236,0.15); border-radius: 14px; }
+    QFrame#helpCard    { background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; }
+    QFrame#registerCard{ background-color: rgba(168,85,247,0.04);  border: 1px solid rgba(168,85,247,0.15);  border-radius: 14px; }
+    QFrame#settingsCard{ background-color: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; }
+    QFrame#managerCard { background-color: rgba(245,158,11,0.04);  border: 1px solid rgba(245,158,11,0.15);  border-radius: 14px; }
+
+    QLabel#labelSection1 { color:#5ba8ff; font-size:11px; font-weight:700; letter-spacing:2px; }
+    QLabel#labelSection2 { color:#c084fc; font-size:11px; font-weight:700; letter-spacing:2px; }
+    QLabel#labelSection3 { color:#4ade80; font-size:11px; font-weight:700; letter-spacing:2px; }
+    QLabel#labelSection4 { color:#fbbf24; font-size:11px; font-weight:700; letter-spacing:2px; }
+    QLabel#labelHint     { color:#8e8e9e; font-size:10pt; }
+
+    QLabel#labelStatusValue { color:#ffffff; font-size:16pt; font-weight:700; }
+    QLabel#labelStatusRights{ color:#8e8e9e; font-size:10pt; }
+    QLabel#labelServerCurrentPath {
+        color:#5ba8ff;
+        font-family: Consolas, monospace;
+        padding: 4px 8px;
+        background: rgba(51,144,236,0.08);
+        border-radius: 6px;
+    }
+
+    QPushButton {
+        background-color: #1e1e2e;
+        border: 1px solid #2e2e42;
+        border-radius: 10px;
+        color: #d1d1e0;
+        font-weight: 600;
+        padding: 10px 14px;
+        text-align: left;
+        min-height: 20px;
+    }
+    QPushButton:hover   { background-color: #252538; color: #ffffff; }
+    QPushButton:pressed { background-color: #1a1a28; }
+    QPushButton:disabled{ color: #555566; background-color: #151520; }
+
+    QPushButton#btnBackDir { padding: 8px 14px; min-width: 40px; text-align:center; }
+    QPushButton#btnUpdate  { padding: 8px 14px; }
+
+    QPushButton#btnDeleteServer {
+        background-color:#3a1414; border:1px solid #7f1d1d; color:#fecaca;
+    }
+    QPushButton#btnDeleteServer:hover { background-color:#7f1d1d; color:#ffffff; }
+
+    QPushButton#pushButton,
+    QPushButton#btnRegestration {
+        background-color:#2563eb; border:1px solid #3b82f6; color:#ffffff; text-align:center;
+    }
+    QPushButton#pushButton:hover,
+    QPushButton#btnRegestration:hover { background-color:#3b82f6; }
+
+    QLineEdit, QComboBox {
+        background-color: #0f0f18;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        padding: 8px 10px;
+        color: #e0e0e0;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+    }
+    QLineEdit:focus, QComboBox:focus { border: 1px solid #3390EC; }
+
+    QTextEdit {
+        background-color: #0a0a12;
+        border: 1px solid #1e1e2e;
+        border-radius: 10px;
+        padding: 8px;
+        color: #a8f0a8;
+        font-family: "Consolas", "Courier New", monospace;
+        font-size: 10pt;
+        selection-background-color: #2563eb;
+    }
+
+    QTreeView {
+        background-color: #0f0f18;
+        border: 1px solid #1e1e2e;
+        border-radius: 10px;
+        padding: 4px;
+        alternate-background-color: #131320;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+        outline: none;
+    }
+    QTreeView::item { padding: 4px 6px; border-radius: 6px; }
+    QTreeView::item:hover { background-color: #1a1a2e; }
+    QTreeView::item:selected { background-color: #2563eb; color: #ffffff; }
+
+    QHeaderView::section {
+        background-color: #1a1a2e;
+        color: #8e8e9e;
+        border: none;
+        border-bottom: 1px solid #2e2e42;
+        padding: 6px 8px;
+        font-weight: 700;
+    }
+
+    QProgressBar {
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        text-align: center;
+        background-color: #0f0f18;
+        color: #d1d1e0;
+        min-height: 22px;
+    }
+    QProgressBar::chunk {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #2563eb, stop:1 #60a5fa);
+        border-radius: 7px;
+    }
+
+    QTabWidget::pane {
+        border: 1px solid #1e1e2e;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.01);
+        top: -1px;
+    }
+    QTabBar::tab {
+        background-color: #1a1a2e;
+        color: #8e8e9e;
+        border: 1px solid #1e1e2e;
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 9px 18px;
+        margin-right: 3px;
+        font-weight: 600;
+    }
+    QTabBar::tab:selected { background-color: #2563eb; color: #ffffff; }
+    QTabBar::tab:hover:!selected { background-color: #252540; color: #d1d1e0; }
+
+    QCheckBox { color: #d1d1e0; spacing: 8px; }
+    QCheckBox::indicator {
+        width: 18px; height: 18px;
+        border: 1px solid #2e2e42;
+        border-radius: 5px;
+        background-color: #0f0f18;
+    }
+    QCheckBox::indicator:checked {
+        background-color: #2563eb;
+        border: 1px solid #3b82f6;
+    }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="leftMargin"><number>16</number></property>
+   <property name="topMargin"><number>16</number></property>
+   <property name="rightMargin"><number>16</number></property>
+   <property name="bottomMargin"><number>16</number></property>
+   <property name="spacing"><number>12</number></property>
+
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex"><number>0</number></property>
+
+     <!-- ================= МЕНЕДЖЕР ОБМЕНА ================= -->
+     <widget class="QWidget" name="tab_Main">
+      <attribute name="title"><string>Менеджер обмена</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabMainLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>10</number></property>
+
+       <item>
+        <widget class="QFrame" name="topBar">
+         <layout class="QHBoxLayout" name="topBarLayout">
+          <property name="leftMargin"><number>10</number></property>
+          <property name="topMargin"><number>8</number></property>
+          <property name="rightMargin"><number>10</number></property>
+          <property name="bottomMargin"><number>8</number></property>
+          <property name="spacing"><number>8</number></property>
+
+          <item>
+           <widget class="QPushButton" name="btnBackDir">
+            <property name="text"><string>←</string></property>
+            <property name="toolTip"><string>Перейти в прошлую директорию</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnUpdate">
+            <property name="text"><string>Обновить</string></property>
+            <property name="toolTip"><string>Обновить список файлов</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelServerCurrentPath">
+            <property name="text"><string>/</string></property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="topBarSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <layout class="QHBoxLayout" name="mainAreaLayout">
+         <property name="spacing"><number>10</number></property>
+
+         <item>
+          <widget class="QFrame" name="actionsPanel">
+           <property name="minimumWidth"><number>210</number></property>
+           <property name="maximumWidth"><number>230</number></property>
+           <layout class="QVBoxLayout" name="actionsLayout">
+            <property name="leftMargin"><number>12</number></property>
+            <property name="topMargin"><number>12</number></property>
+            <property name="rightMargin"><number>12</number></property>
+            <property name="bottomMargin"><number>12</number></property>
+            <property name="spacing"><number>8</number></property>
+
+            <item>
+             <widget class="QLabel" name="labelActionsTitle">
+              <property name="text"><string>ДЕЙСТВИЯ</string></property>
+              <property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10px; font-weight:700; letter-spacing:2px;</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnUpload">
+              <property name="text"><string>⬆  Загрузить на сервер</string></property>
+              <property name="toolTip"><string>Загрузить файл с вашего ПК на сервер</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnCopy">
+              <property name="text"><string>⬇  Скачать с сервера</string></property>
+              <property name="toolTip"><string>Скачать файл с сервера</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnMove">
+              <property name="text"><string>↔  Переместить</string></property>
+              <property name="toolTip"><string>Переместить файл с вашего ПК на сервер с удалением</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnDeleteServer">
+              <property name="text"><string>✕  Удалить на сервере</string></property>
+              <property name="toolTip"><string>Удалить файл на сервере</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnViewMetaDataServerFile">
+              <property name="text"><string>ℹ  Свойства файла</string></property>
+              <property name="toolTip"><string>Просмотр метаданных файла</string></property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="actionsSpacer">
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QTreeView" name="treeViewServerFS"/>
+         </item>
+        </layout>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="logPanel">
+         <layout class="QVBoxLayout" name="logLayout">
+          <property name="leftMargin"><number>12</number></property>
+          <property name="topMargin"><number>10</number></property>
+          <property name="rightMargin"><number>12</number></property>
+          <property name="bottomMargin"><number>12</number></property>
+          <property name="spacing"><number>6</number></property>
+          <item>
+           <widget class="QLabel" name="labelLogTitle">
+            <property name="text"><string>ЖУРНАЛ ОПЕРАЦИЙ</string></property>
+            <property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="textEditLogLocal">
+            <property name="readOnly"><bool>true</bool></property>
+            <property name="minimumHeight"><number>110</number></property>
+            <property name="maximumHeight"><number>160</number></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ================= СТАТУС ================= -->
+     <widget class="QWidget" name="tab_Staus">
+      <attribute name="title"><string>Статус</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabStatusLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <widget class="QFrame" name="statusCard">
+         <layout class="QHBoxLayout" name="statusCardLayout">
+          <property name="leftMargin"><number>16</number></property>
+          <property name="topMargin"><number>14</number></property>
+          <property name="rightMargin"><number>16</number></property>
+          <property name="bottomMargin"><number>14</number></property>
+          <property name="spacing"><number>12</number></property>
+          <item>
+           <layout class="QVBoxLayout" name="statusTextLayout">
+            <property name="spacing"><number>2</number></property>
+            <item>
+             <widget class="QLabel" name="labelSection3">
+              <property name="text"><string>ВАШ СТАТУС</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelStatusValue">
+              <property name="text"><string>Зарегистрирован</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelStatusRights">
+              <property name="text"><string>Права доступа: не определены</string></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="statusSpacer">
+            <property name="orientation"><enum>Qt::Horizontal</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QFrame" name="progressCard">
+         <layout class="QGridLayout" name="progressGrid">
+          <property name="leftMargin"><number>16</number></property>
+          <property name="topMargin"><number>16</number></property>
+          <property name="rightMargin"><number>16</number></property>
+          <property name="bottomMargin"><number>16</number></property>
+          <property name="horizontalSpacing"><number>24</number></property>
+          <property name="verticalSpacing"><number>12</number></property>
+
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelUploadHeader">
+            <property name="text"><string>ВЫГРУЗКА НА СЕРВЕР</string></property>
+            <property name="styleSheet"><string notr="true">color:#5ba8ff; font-size:10px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QProgressBar" name="progressBarUploadOne">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QProgressBar" name="progressBarUploadTwo">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QProgressBar" name="progressBarUploadThree">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+
+          <item row="0" column="1">
+           <widget class="QLabel" name="labelDownloadHeader">
+            <property name="text"><string>ВЫГРУЗКА С СЕРВЕРА</string></property>
+            <property name="styleSheet"><string notr="true">color:#c084fc; font-size:10px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QProgressBar" name="progressBarDownloadOne">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QProgressBar" name="progressBarDownloadTwo">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QProgressBar" name="progressBarDownloadThree">
+            <property name="value"><number>0</number></property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+
+       <item>
+        <spacer name="statusBottomSpacer">
+         <property name="orientation"><enum>Qt::Vertical</enum></property>
+         <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ================= ПОДКЛЮЧЕНИЕ ================= -->
+     <widget class="QWidget" name="tab_Data">
+      <attribute name="title"><string>Подключение</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabDataLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <widget class="QFrame" name="connectionCard">
+         <layout class="QVBoxLayout" name="connectionLayout">
+          <property name="leftMargin"><number>20</number></property>
+          <property name="topMargin"><number>18</number></property>
+          <property name="rightMargin"><number>20</number></property>
+          <property name="bottomMargin"><number>18</number></property>
+          <property name="spacing"><number>8</number></property>
+
+          <item>
+           <widget class="QLabel" name="labelConnTitle">
+            <property name="text"><string>ПОДКЛЮЧЕНИЕ К СЕРВЕРУ</string></property>
+            <property name="styleSheet"><string notr="true">color:#5ba8ff; font-size:11px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+
+          <item><widget class="QLabel" name="labelHintIP"><property name="text"><string>IP-адрес</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+          <item><widget class="QLineEdit" name="lineEditIP"><property name="placeholderText"><string>Например: 192.168.1.100</string></property></widget></item>
+
+          <item><widget class="QLabel" name="labelHintPort"><property name="text"><string>Порт (необязательно)</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+          <item><widget class="QLineEdit" name="lineEditPort"><property name="placeholderText"><string>По умолчанию 443</string></property></widget></item>
+
+          <item><widget class="QLabel" name="labelHintLogin"><property name="text"><string>Логин администратора</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+          <item><widget class="QLineEdit" name="lineEditLogin"><property name="placeholderText"><string>admin</string></property></widget></item>
+
+          <item><widget class="QLabel" name="labelHintPassword"><property name="text"><string>Пароль</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+          <item><widget class="QLineEdit" name="lineEditPassword"><property name="echoMode"><enum>QLineEdit::Password</enum></property><property name="placeholderText"><string>••••••••</string></property></widget></item>
+
+          <item>
+           <spacer name="connSpacer">
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property>
+           </spacer>
+          </item>
+
+          <item>
+           <layout class="QHBoxLayout" name="connButtonLayout">
+            <item>
+             <spacer name="connButtonSpacer">
+              <property name="orientation"><enum>Qt::Horizontal</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text"><string>Подключиться</string></property>
+              <property name="minimumWidth"><number>180</number></property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ================= ПОМОЩЬ ================= -->
+     <widget class="QWidget" name="tab_Help">
+      <attribute name="title"><string>Помощь</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabHelpLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <layout class="QHBoxLayout" name="helpRow">
+         <property name="spacing"><number>12</number></property>
+
+         <item>
+          <widget class="QFrame" name="helpCard">
+           <layout class="QVBoxLayout" name="helpCardLayout">
+            <property name="leftMargin"><number>16</number></property>
+            <property name="topMargin"><number>16</number></property>
+            <property name="rightMargin"><number>16</number></property>
+            <property name="bottomMargin"><number>16</number></property>
+            <property name="spacing"><number>10</number></property>
+
+            <item>
+             <widget class="QLabel" name="labelHelpTitle">
+              <property name="text"><string>ОСНОВНЫЕ ПРАВИЛА</string></property>
+              <property name="styleSheet"><string notr="true">color:#5ba8ff; font-size:11px; font-weight:700; letter-spacing:2px;</string></property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labeliInfo">
+              <property name="text"><string>&lt;b&gt;1. Передача файлов&lt;/b&gt;&lt;br&gt;1.1 Используйте передачу файлов только при работающем интернете и запущенном сервере.&lt;br&gt;1.2 Файлы более 100 МБ загружаются в многопоточном режиме.&lt;br&gt;&lt;br&gt;&lt;b&gt;2. Рекомендации&lt;/b&gt;&lt;br&gt;2.1 Делайте резервные копии важных данных.&lt;br&gt;2.2 Не скачивайте нежелательное ПО.&lt;br&gt;2.3 Не сообщайте никому порт сервера.&lt;br&gt;&lt;br&gt;&lt;b&gt;3. Права доступа&lt;/b&gt;&lt;br&gt;0 — Наблюдатель&lt;br&gt;1 — Преподаватель&lt;br&gt;2 — Повышенный пользователь&lt;br&gt;3 — Администратор</string></property>
+              <property name="wordWrap"><bool>true</bool></property>
+              <property name="textFormat"><enum>Qt::RichText</enum></property>
+              <property name="styleSheet"><string notr="true">color:#d1d1e0; font-size:10pt;</string></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+
+         <item>
+          <widget class="QFrame" name="registerCard">
+           <property name="minimumWidth"><number>320</number></property>
+           <property name="maximumWidth"><number>360</number></property>
+           <layout class="QVBoxLayout" name="registerLayout">
+            <property name="leftMargin"><number>16</number></property>
+            <property name="topMargin"><number>16</number></property>
+            <property name="rightMargin"><number>16</number></property>
+            <property name="bottomMargin"><number>16</number></property>
+            <property name="spacing"><number>8</number></property>
+
+            <item>
+             <widget class="QLabel" name="labelRegTitle">
+              <property name="text"><string>РЕГИСТРАЦИЯ</string></property>
+              <property name="styleSheet"><string notr="true">color:#c084fc; font-size:11px; font-weight:700; letter-spacing:2px;</string></property>
+             </widget>
+            </item>
+
+            <item><widget class="QLabel" name="labelRegHintLogin"><property name="text"><string>Логин</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><widget class="QLineEdit" name="lineEditLoginRegister"><property name="placeholderText"><string>Придумайте логин</string></property></widget></item>
+
+            <item><widget class="QLabel" name="labelRegHintPass"><property name="text"><string>Пароль</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><widget class="QLineEdit" name="lineEditPasswordRegister"><property name="echoMode"><enum>QLineEdit::Password</enum></property><property name="placeholderText"><string>••••••••</string></property></widget></item>
+
+            <item><widget class="QLabel" name="labelRegHintRights"><property name="text"><string>Запрашиваемые права</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item>
+             <widget class="QComboBox" name="comboBoxPermisionRegister">
+              <property name="currentIndex"><number>0</number></property>
+              <item><property name="text"><string>0 — Наблюдатель</string></property></item>
+              <item><property name="text"><string>1 — Преподаватель</string></property></item>
+              <item><property name="text"><string>2 — Повышенный пользователь</string></property></item>
+              <item><property name="text"><string>3 — Администратор</string></property></item>
+             </widget>
+            </item>
+
+            <item>
+             <widget class="QLabel" name="labelRegHintInfo">
+              <property name="text"><string>После генерации логина передайте его в ИТ-отдел для выдачи прав.</string></property>
+              <property name="wordWrap"><bool>true</bool></property>
+              <property name="styleSheet"><string notr="true">color:#6c6c80; font-size:9pt; padding-top: 4px;</string></property>
+             </widget>
+            </item>
+
+            <item>
+             <spacer name="regSpacer">
+              <property name="orientation"><enum>Qt::Vertical</enum></property>
+              <property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property>
+             </spacer>
+            </item>
+
+            <item>
+             <widget class="QPushButton" name="btnRegestration">
+              <property name="text"><string>Зарегистрироваться</string></property>
+              <property name="minimumHeight"><number>38</number></property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ================= НАСТРОЙКИ ================= -->
+     <widget class="QWidget" name="tab_Settings">
+      <attribute name="title"><string>Настройки</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabSettingsLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <widget class="QFrame" name="settingsCard">
+         <layout class="QVBoxLayout" name="settingsLayout">
+          <property name="leftMargin"><number>20</number></property>
+          <property name="topMargin"><number>18</number></property>
+          <property name="rightMargin"><number>20</number></property>
+          <property name="bottomMargin"><number>18</number></property>
+          <property name="spacing"><number>12</number></property>
+
+          <item>
+           <widget class="QLabel" name="labelSettingsTitle">
+            <property name="text"><string>НАСТРОЙКИ ОБНОВЛЕНИЯ</string></property>
+            <property name="styleSheet"><string notr="true">color:#5ba8ff; font-size:11px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text"><string>Автоматическое обновление списка файлов</string></property>
+            <property name="checked"><bool>true</bool></property>
+           </widget>
+          </item>
+
+          <item>
+           <layout class="QHBoxLayout" name="intervalLayout">
+            <property name="spacing"><number>8</number></property>
+            <item><widget class="QLabel" name="labelIntervalHint"><property name="text"><string>Интервал обновления:</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><widget class="QLineEdit" name="lineEdit"><property name="text"><string>5</string></property><property name="maximumWidth"><number>80</number></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+            <item><widget class="QLabel" name="labelIntervalUnit"><property name="text"><string>секунд</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><spacer name="intervalSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+           </layout>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="labelSettingsTitle2">
+            <property name="text"><string>ЗАГРУЗКА ФАЙЛОВ</string></property>
+            <property name="styleSheet"><string notr="true">color:#c084fc; font-size:11px; font-weight:700; letter-spacing:2px; padding-top: 8px;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="text"><string>Многопоточная загрузка больших файлов</string></property>
+            <property name="checked"><bool>true</bool></property>
+           </widget>
+          </item>
+
+          <item>
+           <layout class="QHBoxLayout" name="threadLayout">
+            <property name="spacing"><number>8</number></property>
+            <item><widget class="QLabel" name="labelThreadHint"><property name="text"><string>Применять для файлов более</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><widget class="QLineEdit" name="lineEdit_2"><property name="text"><string>100</string></property><property name="maximumWidth"><number>90</number></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+            <item><widget class="QLabel" name="labelThreadUnit"><property name="text"><string>МБ</string></property><property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property></widget></item>
+            <item><spacer name="threadSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+           </layout>
+          </item>
+
+          <item>
+           <spacer name="settingsBottomSpacer">
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- ================= УПРАВЛЕНИЕ СЕРВЕРОМ ================= -->
+     <widget class="QWidget" name="tab_ManagerServer">
+      <attribute name="title"><string>Управление сервером</string></attribute>
+
+      <layout class="QVBoxLayout" name="tabManagerLayout">
+       <property name="leftMargin"><number>12</number></property>
+       <property name="topMargin"><number>12</number></property>
+       <property name="rightMargin"><number>12</number></property>
+       <property name="bottomMargin"><number>12</number></property>
+       <property name="spacing"><number>12</number></property>
+
+       <item>
+        <widget class="QFrame" name="managerCard">
+         <layout class="QVBoxLayout" name="managerLayout">
+          <property name="leftMargin"><number>20</number></property>
+          <property name="topMargin"><number>18</number></property>
+          <property name="rightMargin"><number>20</number></property>
+          <property name="bottomMargin"><number>18</number></property>
+          <property name="spacing"><number>10</number></property>
+
+          <item>
+           <widget class="QLabel" name="labelManagerTitle">
+            <property name="text"><string>УПРАВЛЕНИЕ СЕРВЕРОМ</string></property>
+            <property name="styleSheet"><string notr="true">color:#fbbf24; font-size:11px; font-weight:700; letter-spacing:2px;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QLabel" name="labelManagerHint">
+            <property name="text"><string>Раздел доступен только пользователям с правами 2 и 3.</string></property>
+            <property name="styleSheet"><string notr="true">color:#8e8e9e; font-size:10pt;</string></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text"><string>⟳  Перезагрузить сервер</string></property>
+            <property name="minimumHeight"><number>42</number></property>
+           </widget>
+          </item>
+
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="text"><string>⬇  Скачать базу логинов</string></property>
+            <property name="minimumHeight"><number>42</number></property>
+           </widget>
+          </item>
+
+          <item>
+           <spacer name="managerSpacer">
+            <property name="orientation"><enum>Qt::Vertical</enum></property>
+            <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

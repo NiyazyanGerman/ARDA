@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TexPanel</class>
+ <widget class="QWidget" name="TexPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1300</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AKUMA ADMINISTRATOR</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget { background-color: #1E1E2E; color: #E0E0E0; font-family: &quot;Segoe UI&quot;; font-size: 13px; }
+QPushButton { background-color: #3B82F6; color: white; border: none; border-radius: 6px; padding: 8px 14px; font-weight: 600; }
+QPushButton:hover { background-color: #2563EB; }
+QLineEdit, QSpinBox { background-color: #2A2A3D; border: 1px solid #4B5563; border-radius: 6px; padding: 6px 10px; }
+QTableView, QTreeWidget { background-color: #252535; border: 1px solid #3F3F5A; border-radius: 8px; }
+QHeaderView::section { background-color: #2A2A3D; color: #A0A0B0; padding: 8px; border: none; }
+QGroupBox { background-color: #252535; border: 1px solid #3F3F5A; border-radius: 8px; }</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="leftMargin">
+    <number>8</number>
+   </property>
+   <property name="topMargin">
+    <number>8</number>
+   </property>
+   <property name="rightMargin">
+    <number>8</number>
+   </property>
+   <property name="bottomMargin">
+    <number>8</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="titleLayout">
+     <item>
+      <widget class="QLabel" name="logo">
+       <property name="styleSheet">
+        <string notr="true">font-size: 24px; font-weight: 900; color: #3B82F6;</string>
+       </property>
+       <property name="text">
+        <string>&lt;font color=&quot;#3B82F6&quot;&gt;&lt;b&gt;A&lt;/b&gt;&lt;/font&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="title">
+       <property name="styleSheet">
+        <string notr="true">color: white; font-size: 16px; font-weight: 600;</string>
+       </property>
+       <property name="text">
+        <string>&lt;b&gt;AKUMA&lt;/b&gt; ADMINISTRATOR</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spacerTitle">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="contentLayout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="connBox">
+       <property name="title">
+        <string>Database Connections</string>
+       </property>
+       <layout class="QVBoxLayout" name="connLayout">
+        <item>
+         <widget class="QLineEdit" name="editHost">
+          <property name="text">
+           <string>localhost</string>
+          </property>
+          <property name="placeholderText">
+           <string>IP</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editPort">
+          <property name="text">
+           <string>5432</string>
+          </property>
+          <property name="placeholderText">
+           <string>Port</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editUser">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>User</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editPass">
+          <property name="echoMode">
+           <enum>QLineEdit::EchoMode::Password</enum>
+          </property>
+          <property name="placeholderText">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="editDb">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>DbName</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnConnect">
+          <property name="text">
+           <string>Connect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnDisconnect">
+          <property name="text">
+           <string>Disconnect</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="textEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTreeWidget" name="treeWidget">
+       <column>
+        <property name="text">
+         <string>Schemas / Tables</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="centerVLayout">
+       <item>
+        <layout class="QHBoxLayout" name="topToolbar">
+         <item>
+          <widget class="QPushButton" name="btnNewScheme">
+           <property name="text">
+            <string>New Scheme</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnSave">
+           <property name="text">
+            <string>Save</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnAddTable">
+           <property name="text">
+            <string>Add Table</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnLoadCurrentTable">
+           <property name="text">
+            <string>Load Table</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnBackup">
+           <property name="text">
+            <string>Backup</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="searchEdit">
+         <property name="placeholderText">
+          <string>Поиск</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="treeTable">
+         <item>
+          <widget class="QTableView" name="tableView"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="actionButtons">
+         <item>
+          <widget class="QPushButton" name="btnRefersh">
+           <property name="text">
+            <string>Обновить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnAddRow">
+           <property name="text">
+            <string>Добавить строку</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnRemoveRow">
+           <property name="text">
+            <string>Удалить строку</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnBan">
+           <property name="styleSheet">
+            <string notr="true">background-color: #EF4444;</string>
+           </property>
+           <property name="text">
+            <string>Забанить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnUnban">
+           <property name="styleSheet">
+            <string notr="true">background-color: #F59E0B;</string>
+           </property>
+           <property name="text">
+            <string>Разбанить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnDelete">
+           <property name="styleSheet">
+            <string notr="true">background-color: #6B7280;</string>
+           </property>
+           <property name="text">
+            <string>Удалить</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

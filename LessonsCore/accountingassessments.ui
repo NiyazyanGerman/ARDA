@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>accountingassessments</class>
+ <widget class="QWidget" name="accountingassessments">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1102</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Учёт оценок</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget#accountingassessments {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #161625, stop:1 #0c0c14);
+        color: #d1d1e0;
+        font-family: &quot;Segoe UI&quot;, sans-serif;
+        font-size: 10pt;
+    }
+
+    QFrame#sidePanel, QFrame#toolbarPanel, QFrame#bottomPanel, QFrame#headerPanel {
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 14px;
+    }
+
+    QLabel#labelSideTitle {
+        color: #5ba8ff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    QLabel { color: #d1d1e0; }
+    QLabel#labelHint { color: #8e8e9e; font-size: 10pt; }
+
+    QLabel#labelJournalTitle {
+        color: #ffffff;
+        font-size: 12pt;
+        font-weight: 700;
+    }
+    QLabel#labelJournalSubtitle {
+        color: #8e8e9e;
+        font-size: 10pt;
+    }
+
+    QPushButton {
+        background-color: #1e1e2e;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        color: #d1d1e0;
+        font-weight: 600;
+        padding: 8px 12px;
+        min-height: 18px;
+    }
+    QPushButton:hover   { background-color: #252538; color: #ffffff; }
+    QPushButton:pressed { background-color: #1a1a28; }
+
+    QPushButton#btnSave {
+        background-color: #2563eb;
+        border: 1px solid #3b82f6;
+        color: #ffffff;
+    }
+    QPushButton#btnSave:hover { background-color: #3b82f6; }
+
+    QPushButton#btnDelete {
+        background-color: #3a1414;
+        border: 1px solid #7f1d1d;
+        color: #fecaca;
+    }
+    QPushButton#btnDelete:hover {
+        background-color: #7f1d1d;
+        color: #ffffff;
+    }
+
+    QToolButton {
+        background-color: #1e1e2e;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        color: #d1d1e0;
+        font-weight: 600;
+        padding: 8px 12px;
+    }
+    QToolButton:hover { background-color: #252538; color: #ffffff; }
+    QToolButton::menu-indicator { image: none; }
+
+    QLineEdit, QComboBox {
+        background-color: #0f0f18;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        padding: 7px 10px;
+        color: #e0e0e0;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+    }
+    QLineEdit:focus, QComboBox:focus { border: 1px solid #3390EC; }
+
+    QTreeWidget {
+        background-color: #0f0f18;
+        border: 1px solid #1e1e2e;
+        border-radius: 8px;
+        color: #d1d1e0;
+        outline: none;
+        padding: 4px;
+    }
+    QTreeWidget::item { padding: 6px 4px; border-radius: 4px; }
+    QTreeWidget::item:hover    { background-color: #1a1a2e; }
+    QTreeWidget::item:selected { background-color: #2563eb; color: #ffffff; }
+
+    QTableView {
+        background-color: #0f0f18;
+        gridline-color: #1e1e2e;
+        border: 1px solid #1e1e2e;
+        border-radius: 10px;
+        color: #e0e0e0;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+        alternate-background-color: #131320;
+    }
+    QTableView::item { padding: 4px; }
+    QTableView::item:hover { background-color: #1a1a2e; }
+
+    QHeaderView::section {
+        background-color: #1a1a2e;
+        color: #8e8e9e;
+        padding: 6px 8px;
+        border: none;
+        border-right: 1px solid #0f0f18;
+        border-bottom: 1px solid #2e2e42;
+        font-weight: 700;
+    }
+
+    QCheckBox { color: #d1d1e0; spacing: 8px; }
+    QCheckBox::indicator {
+        width: 16px; height: 16px;
+        border: 1px solid #2e2e42;
+        border-radius: 4px;
+        background-color: #0f0f18;
+    }
+    QCheckBox::indicator:checked {
+        background-color: #2563eb;
+        border: 1px solid #3b82f6;
+    }
+
+    QMenu {
+        background-color: #1a1a2e;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        padding: 4px;
+    }
+    QMenu::item { padding: 6px 20px; border-radius: 4px; }
+    QMenu::item:selected { background-color: #2563eb; color: #ffffff; }
+   </string>
+  </property>
+  <layout class="QHBoxLayout" name="mainHorizontalLayout">
+   <property name="spacing"><number>12</number></property>
+   <property name="leftMargin"><number>12</number></property>
+   <property name="topMargin"><number>12</number></property>
+   <property name="rightMargin"><number>12</number></property>
+   <property name="bottomMargin"><number>12</number></property>
+
+   <!-- ============ ЛЕВАЯ ПАНЕЛЬ: дерево групп ============ -->
+   <item>
+    <widget class="QFrame" name="sidePanel">
+     <property name="minimumWidth"><number>240</number></property>
+     <property name="maximumWidth"><number>280</number></property>
+     <layout class="QVBoxLayout" name="leftLayout">
+      <property name="spacing"><number>10</number></property>
+      <property name="leftMargin"><number>14</number></property>
+      <property name="topMargin"><number>14</number></property>
+      <property name="rightMargin"><number>14</number></property>
+      <property name="bottomMargin"><number>14</number></property>
+
+      <item>
+       <widget class="QLabel" name="labelSideTitle">
+        <property name="text"><string>МОИ ГРУППЫ</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QTreeWidget" name="treeGroups">
+        <property name="headerHidden"><bool>true</bool></property>
+        <property name="columnCount"><number>1</number></property>
+        <column><property name="text"><string>Группы и дисциплины</string></property></column>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QLabel" name="labelHint">
+        <property name="text"><string>Поиск по ФИО:</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QLineEdit" name="lineEditFindName">
+        <property name="placeholderText"><string>Введите имя студента...</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="btnReload">
+        <property name="text"><string>↻ Обновить список</string></property>
+       </widget>
+      </item>
+
+      <item>
+       <spacer name="leftSpacer">
+        <property name="orientation"><enum>Qt::Vertical</enum></property>
+        <property name="sizeHint" stdset="0">
+         <size><width>20</width><height>40</height></size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- ============ ПРАВАЯ ЧАСТЬ ============ -->
+   <item>
+    <layout class="QVBoxLayout" name="rightLayout">
+     <property name="spacing"><number>10</number></property>
+
+     <!-- Шапка журнала: группа → дисциплина → период -->
+     <item>
+      <widget class="QFrame" name="headerPanel">
+       <layout class="QHBoxLayout" name="headerLayout">
+        <property name="spacing"><number>10</number></property>
+        <property name="leftMargin"><number>14</number></property>
+        <property name="topMargin"><number>10</number></property>
+        <property name="rightMargin"><number>14</number></property>
+        <property name="bottomMargin"><number>10</number></property>
+
+        <item>
+         <layout class="QVBoxLayout" name="headerTextLayout">
+          <property name="spacing"><number>2</number></property>
+          <item>
+           <widget class="QLabel" name="labelJournalTitle">
+            <property name="text"><string>Журнал не выбран</string></property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelJournalSubtitle">
+            <property name="text"><string>Выберите группу и дисциплину в дереве слева</string></property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+
+        <item>
+         <spacer name="headerSpacer">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          <property name="sizeHint" stdset="0">
+           <size><width>40</width><height>20</height></size>
+          </property>
+         </spacer>
+        </item>
+
+        <item>
+         <widget class="QLabel" name="labelPeriod">
+          <property name="text"><string>Период:</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="comboBoxPeriod">
+          <property name="minimumWidth"><number>160</number></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- Тулбар: строки | колонки | экспорт | сохранить -->
+     <item>
+      <widget class="QFrame" name="toolbarPanel">
+       <layout class="QHBoxLayout" name="tableActionsLayout">
+        <property name="spacing"><number>8</number></property>
+        <property name="leftMargin"><number>10</number></property>
+        <property name="topMargin"><number>8</number></property>
+        <property name="rightMargin"><number>10</number></property>
+        <property name="bottomMargin"><number>8</number></property>
+
+        <item>
+         <widget class="QPushButton" name="btnAddStudent">
+          <property name="text"><string>+ Студент</string></property>
+          <property name="toolTip"><string>Добавить строку студента</string></property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAddDay">
+          <property name="text"><string>+ День</string></property>
+          <property name="toolTip"><string>Добавить колонку с датой</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="Line" name="lineSep1">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QToolButton" name="btnColumnsMenu">
+          <property name="text"><string>⚙ Колонки</string></property>
+          <property name="popupMode"><enum>QToolButton::InstantPopup</enum></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnExport">
+          <property name="text"><string>📤 Экспорт</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer name="toolbarSpacer">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          <property name="sizeHint" stdset="0">
+           <size><width>40</width><height>20</height></size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+
+     <!-- Сама таблица журнала -->
+     <item>
+      <widget class="QTableView" name="tableView">
+       <property name="alternatingRowColors"><bool>true</bool></property>
+       <property name="sortingEnabled"><bool>true</bool></property>
+       <property name="contextMenuPolicy"><enum>Qt::CustomContextMenu</enum></property>
+       <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+       <property name="selectionMode"><enum>QAbstractItemView::ExtendedSelection</enum></property>
+      </widget>
+     </item>
+
+     <!-- Нижняя панель -->
+     <item>
+      <widget class="QFrame" name="bottomPanel">
+       <layout class="QHBoxLayout" name="bottomLayout">
+        <property name="spacing"><number>10</number></property>
+        <property name="leftMargin"><number>10</number></property>
+        <property name="topMargin"><number>8</number></property>
+        <property name="rightMargin"><number>10</number></property>
+        <property name="bottomMargin"><number>8</number></property>
+
+        <item>
+         <widget class="QCheckBox" name="checkBoxConfrimDelete">
+          <property name="text"><string>Запрашивать подтверждение при удалении</string></property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="bottomSpacer">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          <property name="sizeHint" stdset="0">
+           <size><width>40</width><height>20</height></size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSave">
+          <property name="text"><string>Сохранить</string></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,53 @@
+#ifndef COURSEWORK_H
+#define COURSEWORK_H
+
+#include <QWidget>
+#include<QComboBox>
+#include<QDateEdit>
+#include"../IOCore/IODataHandler.h"
+#include"../FileChooicer.h"
+#include"ITablesManager.h"
+
+#include<QCheckBox>
+#include"../Serializer.h"
+
+class MainWindow;
+
+namespace Ui {
+class Coursework;
+}
+
+class Coursework : public ITablesManager
+{
+    Q_OBJECT
+
+public:
+    explicit Coursework(MainWindow* mainWin,QWidget *parent = nullptr);
+    ~Coursework();
+
+private:
+    Ui::Coursework *ui;
+    MainWindow* main;
+    std::unique_ptr<ImportSaveData> isd;
+    FileManager* fileManager;
+    std::unique_ptr<SerializerData> ser;
+
+    QCheckBox *confirmCheckBox;
+    QCheckBox* OnOffSerelization;
+    void BackMenu();
+
+public slots:
+    void PrinterData();
+    void addRow();
+    void DeleteRow();
+    void ClearTable();
+    void findName(const QString& name);
+
+
+    QString SetHeaderDocument() override;
+    QString SetNameDocument() override;
+    QString setFormat(const QJsonObject &obj) override;
+
+};
+
+#endif // COURSEWORK_H

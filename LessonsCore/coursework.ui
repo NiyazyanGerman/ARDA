@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Coursework</class>
+ <widget class="QWidget" name="Coursework">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1285</width>
+    <height>714</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Курсовые работы</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget#Coursework {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #161625, stop:1 #0c0c14);
+        color: #d1d1e0;
+        font-family: "Segoe UI", sans-serif;
+        font-size: 10pt;
+    }
+
+    QFrame#toolbarPanel {
+        background-color: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 10px;
+    }
+    QFrame#actionsPanel {
+        background-color: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px;
+    }
+
+    QLabel#labelSearch {
+        color: #8e8e9e;
+        font-size: 10pt;
+    }
+
+    QLabel#labelActionsTitle {
+        color: #5ba8ff;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    QPushButton {
+        background-color: #1e1e2e;
+        border: 1px solid #2e2e42;
+        border-radius: 10px;
+        color: #d1d1e0;
+        font-weight: 600;
+        padding: 10px 14px;
+        text-align: left;
+        min-height: 20px;
+    }
+    QPushButton:hover   { background-color: #252538; color: #ffffff; }
+    QPushButton:pressed { background-color: #1a1a28; }
+
+    QPushButton#btnSave {
+        background-color: #2563eb;
+        border: 1px solid #3b82f6;
+        color: #ffffff;
+    }
+    QPushButton#btnSave:hover { background-color: #3b82f6; }
+
+    QPushButton#bntDelete {
+        background-color: #3a1414;
+        border: 1px solid #7f1d1d;
+        color: #fecaca;
+    }
+    QPushButton#bntDelete:hover { background-color: #7f1d1d; color: #ffffff; }
+
+    QPushButton#btnBack {
+        background-color: #1a1a2e;
+        color: #8e8e9e;
+    }
+    QPushButton#btnBack:hover { color: #ffffff; }
+
+    QLineEdit {
+        background-color: #0f0f18;
+        border: 1px solid #2e2e42;
+        border-radius: 8px;
+        padding: 7px 10px;
+        color: #e0e0e0;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+    }
+    QLineEdit:focus { border: 1px solid #3390EC; }
+
+    QTableWidget {
+        background-color: #0f0f18;
+        alternate-background-color: #131320;
+        gridline-color: #1e1e2e;
+        border: 1px solid #1e1e2e;
+        border-radius: 10px;
+        color: #e0e0e0;
+        selection-background-color: #2563eb;
+        selection-color: #ffffff;
+    }
+    QTableWidget::item { padding: 4px; }
+    QTableWidget::item:hover { background-color: #1a1a2e; }
+
+    QHeaderView::section {
+        background-color: #1a1a2e;
+        color: #8e8e9e;
+        padding: 6px 8px;
+        border: none;
+        border-right: 1px solid #0f0f18;
+        border-bottom: 1px solid #2e2e42;
+        font-weight: 700;
+    }
+    QTableCornerButton::section {
+        background-color: #1a1a2e;
+        border: none;
+    }
+
+    QScrollBar:vertical {
+        background: #0f0f18;
+        width: 10px;
+        margin: 0;
+        border-radius: 5px;
+    }
+    QScrollBar::handle:vertical {
+        background: #2e2e42;
+        min-height: 24px;
+        border-radius: 5px;
+    }
+    QScrollBar::handle:vertical:hover { background: #3a3a52; }
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical { height: 0; }
+
+    QScrollBar:horizontal {
+        background: #0f0f18;
+        height: 10px;
+        margin: 0;
+        border-radius: 5px;
+    }
+    QScrollBar::handle:horizontal {
+        background: #2e2e42;
+        min-width: 24px;
+        border-radius: 5px;
+    }
+    QScrollBar::handle:horizontal:hover { background: #3a3a52; }
+    QScrollBar::add-line:horizontal,
+    QScrollBar::sub-line:horizontal { width: 0; }
+   </string>
+  </property>
+
+  <layout class="QVBoxLayout" name="rootLayout">
+   <property name="spacing"><number>12</number></property>
+   <property name="leftMargin"><number>12</number></property>
+   <property name="topMargin"><number>12</number></property>
+   <property name="rightMargin"><number>12</number></property>
+   <property name="bottomMargin"><number>12</number></property>
+
+   <!-- Панель поиска -->
+   <item>
+    <widget class="QFrame" name="toolbarPanel">
+     <layout class="QHBoxLayout" name="toolbarLayout">
+      <property name="spacing"><number>10</number></property>
+      <property name="leftMargin"><number>12</number></property>
+      <property name="topMargin"><number>10</number></property>
+      <property name="rightMargin"><number>12</number></property>
+      <property name="bottomMargin"><number>10</number></property>
+
+      <item>
+       <widget class="QLabel" name="labelSearch">
+        <property name="text"><string>Поиск:</string></property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditFind">
+        <property name="placeholderText"><string>Введите ФИО, группу или тему работы...</string></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Основная область: таблица + панель действий -->
+   <item>
+    <layout class="QHBoxLayout" name="mainAreaLayout">
+     <property name="spacing"><number>12</number></property>
+
+     <!-- Таблица -->
+     <item>
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="alternatingRowColors"><bool>true</bool></property>
+       <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+       <property name="sortingEnabled"><bool>true</bool></property>
+
+       <column><property name="text"><string>ID</string></property></column>
+       <column><property name="text"><string>ФИО</string></property></column>
+       <column><property name="text"><string>Группа</string></property></column>
+       <column><property name="text"><string>Зачётная книжка</string></property></column>
+       <column><property name="text"><string>Тема</string></property></column>
+       <column><property name="text"><string>Куратор / Руководитель</string></property></column>
+       <column><property name="text"><string>Этап работы</string></property></column>
+       <column><property name="text"><string>Оценка</string></property></column>
+       <column><property name="text"><string>Дата сдачи</string></property></column>
+       <column><property name="text"><string>Сведения</string></property></column>
+      </widget>
+     </item>
+
+     <!-- Правая панель действий -->
+     <item>
+      <widget class="QFrame" name="actionsPanel">
+       <property name="minimumWidth"><number>220</number></property>
+       <property name="maximumWidth"><number>240</number></property>
+       <layout class="QVBoxLayout" name="actionsLayout">
+        <property name="spacing"><number>8</number></property>
+        <property name="leftMargin"><number>12</number></property>
+        <property name="topMargin"><number>12</number></property>
+        <property name="rightMargin"><number>12</number></property>
+        <property name="bottomMargin"><number>12</number></property>
+
+        <item>
+         <widget class="QLabel" name="labelActionsTitle">
+          <property name="text"><string>ДЕЙСТВИЯ</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnAdd">
+          <property name="text"><string>+  Добавить</string></property>
+          <property name="toolTip"><string>Добавить новую курсовую работу</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnSave">
+          <property name="text"><string>💾  Сохранить</string></property>
+          <property name="toolTip"><string>Сохранить изменения</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnUpload">
+          <property name="text"><string>⬆  Загрузить</string></property>
+          <property name="toolTip"><string>Загрузить данные из файла</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnPrinter">
+          <property name="text"><string>🖨  Печать в PDF</string></property>
+          <property name="toolTip"><string>Экспорт в PDF</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnClear">
+          <property name="text"><string>⌫  Очистить</string></property>
+          <property name="toolTip"><string>Очистить таблицу</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="bntDelete">
+          <property name="text"><string>✕  Удалить строку</string></property>
+          <property name="toolTip"><string>Удалить выбранную строку</string></property>
+         </widget>
+        </item>
+
+        <item>
+         <spacer name="actionsSpacer">
+          <property name="orientation"><enum>Qt::Vertical</enum></property>
+          <property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property>
+         </spacer>
+        </item>
+
+        <item>
+         <widget class="QPushButton" name="btnBack">
+          <property name="text"><string>←  Выйти</string></property>
+          <property name="toolTip"><string>Закрыть окно</string></property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
