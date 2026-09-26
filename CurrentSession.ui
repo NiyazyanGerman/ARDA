@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CurrentSession</class>
+ <widget class="QWidget" name="CurrentSession">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>533</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>👤 Профиль</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget#CurrentSession {
+        background-color: #f0f2f5;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="margin" stdset="0">
+    <number>15</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="cardFrame">
+     <property name="styleSheet">
+      <string notr="true">
+       QFrame#cardFrame {
+           background-color: #ffffff;
+           border: 1px solid #dcdcdc;
+           border-radius: 12px;
+           box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+       }
+      </string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="cardLayout">
+      <property name="spacing">
+       <number>20</number>
+      </property>
+      <property name="margin" stdset="0">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="lblAvatar">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>70</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>70</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+          QLabel#lblAvatar {
+              background-color: #3498db;
+              border-radius: 35px;
+              color: white;
+              font-size: 28px;
+              font-weight: bold;
+              qproperty-alignment: AlignCenter;
+          }
+         </string>
+        </property>
+        <property name="text">
+         <string>ИИ</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="textLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblFullName">
+          <property name="styleSheet">
+           <string notr="true">
+            QLabel#lblFullName {
+                font-size: 18px;
+                font-weight: bold;
+                color: #2c3e50;
+            }
+           </string>
+          </property>
+          <property name="text">
+           <string>Иванов Иван Иванович</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lblEmail">
+          <property name="styleSheet">
+           <string notr="true">
+            QLabel#lblDepartment {
+                font-size: 13px;
+                color: #7f8c8d;
+            }
+           </string>
+          </property>
+          <property name="text">
+           <string>Почта:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="loginStatusLayout">
+          <property name="spacing">
+           <number>15</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="lblUserType">
+            <property name="styleSheet">
+             <string notr="true">
+              QLabel#lblUserType {
+                  font-size: 11px;
+                  color: #8e44ad;
+                  font-weight: bold;
+              }
+             </string>
+            </property>
+            <property name="text">
+             <string>Преподаватель</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblStatus">
+            <property name="styleSheet">
+             <string notr="true">
+              QLabel#lblStatus {
+                  font-size: 12px;
+                  color: #27ae60;
+                  font-weight: bold;
+              }
+             </string>
+            </property>
+            <property name="text">
+             <string> Активен</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="sessionLayout">
+          <property name="spacing">
+           <number>15</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="lblSessionStart">
+            <property name="styleSheet">
+             <string notr="true">
+              QLabel#lblSessionStart {
+                  font-size: 11px;
+                  color: #95a5a6;
+              }
+             </string>
+            </property>
+            <property name="text">
+             <string>Начало: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblSessionExpires">
+            <property name="styleSheet">
+             <string notr="true">
+              QLabel#lblSessionExpires {
+                  font-size: 11px;
+                  color: #e67e22;
+              }
+             </string>
+            </property>
+            <property name="text">
+             <string>До окончания: </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnLogout">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Выйти из системы</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+          QPushButton#btnLogout {
+              background-color: #e74c3c;
+              border: none;
+              border-radius: 20px;
+              color: white;
+              font-size: 16px;
+              font-weight: bold;
+          }
+          QPushButton#btnLogout:hover {
+              background-color: #c0392b;
+          }
+          QPushButton#btnLogout:pressed {
+              background-color: #a93226;
+          }
+         </string>
+        </property>
+        <property name="text">
+         <string>✕</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
