@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScheduleBuilderForm</class>
+ <widget class="QWidget" name="ScheduleBuilderForm">
+  <property name="windowModality">
+   <enum>Qt::WindowModality::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>982</width>
+    <height>865</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+    <pointsize>-1</pointsize>
+    <bold>false</bold>
+    <kerning>true</kerning>
+    <hintingpreference>PreferDefaultHinting</hintingpreference>
+   </font>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::FocusPolicy::NoFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===== Base ===== */
+QWidget {
+    background-color: #2b2f38;
+    color: #e6e6e6;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 13px;
+}
+
+/* ===== Sidebar Buttons ===== */
+QPushButton {
+    background-color: #3a404b;
+    border: 1px solid #4a5160;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: #444b57;
+}
+
+QPushButton:pressed {
+    background-color: #2d313a;
+}
+
+/* Primary button (Сохранить) */
+QPushButton#saveButton {
+    background-color: #3da561;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+}
+
+QPushButton#saveButton:hover {
+    background-color: #45b86c;
+}
+
+QPushButton#saveButton:pressed {
+    background-color: #2f8f52;
+}
+
+
+/* ===== ComboBox ===== */
+QComboBox {
+    background-color: #3a404b;
+    border: 1px solid #505765;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+QComboBox:hover {
+    border: 1px solid #6c7486;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #2b2f38;
+    border: 1px solid #3da561;
+    selection-background-color: #3da561;
+}
+
+
+/* ===== LineEdit ===== */
+QLineEdit {
+    background-color: #3a404b;
+    border: 1px solid #505765;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #3da561;
+}
+
+
+/* ===== QListWidget ===== */
+QListWidget {
+    background-color: #262a33;
+    border: 1px solid #3f4654;
+    border-radius: 8px;
+    padding: 4px;
+    outline: none;
+}
+
+QListWidget::item {
+    background-color: transparent;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+QListWidget::item:hover {
+    background-color: #353b47;
+}
+
+QListWidget::item:selected {
+    background-color: #3da561;
+    color: white;
+}
+
+QListWidget::item:selected:hover {
+    background-color: #45b86c;
+}
+
+
+/* ===== ScrollBar ===== */
+QScrollBar:vertical {
+    background: #2b2f38;
+    width: 10px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical {
+    background: #4a5160;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #5c6475;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+
+/* ===== Calendar ===== */
+QCalendarWidget QWidget {
+    alternate-background-color: #2b2f38;
+}
+
+QCalendarWidget QToolButton {
+    background-color: #3a404b;
+    border: none;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #4a5160;
+}
+
+QCalendarWidget QAbstractItemView {
+    selection-background-color: #3da561;
+    selection-color: white;
+    background-color: #262a33;
+}
+
+
+/* ===== GroupBox (если используешь) ===== */
+QGroupBox {
+    border: 1px solid #3f4654;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+}</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>951</width>
+     <height>851</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="btnRemove">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Удалить
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Пара</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Учитель</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Тип пары</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="btnQuit">
+      <property name="text">
+       <string>Выйти
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QComboBox" name="comboBoxLessonTime"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="btnCreateSheudle">
+      <property name="text">
+       <string>Сконструировать
+ JSON</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="btnSave">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Сохранить
+ Расписание</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QComboBox" name="comboBoxTeacher"/>
+    </item>
+    <item row="3" column="2">
+     <widget class="QComboBox" name="comboBoxTypeLesson"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="btnPrintPDF">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Печать
+ PDF</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="btnHelp">
+      <property name="text">
+       <string>
+Инструкция</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="15">
+     <widget class="QListWidget" name="listWidget"/>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Кабинет</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QComboBox" name="comboBoxCabinet"/>
+    </item>
+    <item row="8" column="2">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Название пары</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="2">
+     <widget class="QComboBox" name="comboBoxLessonName"/>
+    </item>
+    <item row="10" column="2">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Дата</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="2">
+     <widget class="QCalendarWidget" name="calendarWidget"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Импорт
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Использовать
+ еженедельно</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0">
+     <widget class="QPushButton" name="btnViewInfo">
+      <property name="text">
+       <string>Информация
+ об данных</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLineEdit" name="lineEditSearchTeacher"/>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLineEdit" name="lineEditSearchCabinet"/>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLineEdit" name="lineEditSearchLessonName"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

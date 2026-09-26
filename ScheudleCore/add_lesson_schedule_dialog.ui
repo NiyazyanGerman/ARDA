@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Add_Lesson_Schedule_Dialog</class>
+ <widget class="QDialog" name="Add_Lesson_Schedule_Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===== База ===== */
+QWidget {
+    background-color: #2B2E34;
+    color: #D8DEE9;
+    font-family: &quot;Segoe UI&quot;, &quot;Inter&quot;, &quot;Arial&quot;;
+    font-size: 14px;
+}
+
+/* ===== QLabel ===== */
+QLabel {
+    color: #D8DEE9;
+}
+
+QLabel#titleLabel {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ECEFF4;
+}
+
+QLabel#secondaryLabel {
+    color: #AEB6C2;
+    font-size: 13px;
+}
+
+/* ===== QPushButton ===== */
+QPushButton {
+    background-color: #3A3F47;
+    color: #D8DEE9;
+    border: 1px solid #4C566A;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #434955;
+}
+
+QPushButton:pressed {
+    background-color: #4C566A;
+}
+
+QPushButton:disabled {
+    background-color: #2E3238;
+    color: #6C7280;
+    border: 1px solid #2E3238;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>541</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="1">
+     <widget class="QPushButton" name="btnQuit">
+      <property name="text">
+       <string>Выйти в Главное Меню</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="btnInstanceData">
+      <property name="text">
+       <string>Заполнить  данные для работы</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="btnAddSchedule">
+      <property name="text">
+       <string>Конструировать расписание</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="btnViewScheudle">
+      <property name="text">
+       <string>Просмотр Раснисаний JSON формат</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
